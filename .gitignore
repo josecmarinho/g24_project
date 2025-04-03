@@ -1,0 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr  3 13:49:28 2025
+
+@author: josec
+"""
+
+# pasta a ignorar
+.spyproject
+__pycache__
+
+#ficheiros a ignorar
+datafile.py
