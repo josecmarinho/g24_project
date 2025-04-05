@@ -8,7 +8,7 @@ Created on Mon Mar 31 15:17:46 2025
 from Classes.gclass import Gclass
 import pandas as pd
 
-class Vehicle(Gclass):
+class vehicle(Gclass):
     obj = dict()
     lst = list()
     pos = 0
@@ -18,13 +18,13 @@ class Vehicle(Gclass):
     des = ['Vehicle ID','Model','Make','Price']
     def __init__(self, id, model, make, price):
         super().__init__()
-        vehicle_id = Vehicle.get_id(id)
-        self._id = float(vehicle_id)
+        vehicle_id = vehicle.get_id(id)
+        self._id = int(vehicle_id)
         self._model = model
         self._make = make
         self._price = float(price)
-        Vehicle.obj[vehicle_id] = self
-        Vehicle.lst.append(vehicle_id)
+        vehicle.obj[vehicle_id] = self
+        vehicle.lst.append(int(id))
     
     @property
     def id(self):
@@ -41,18 +41,3 @@ class Vehicle(Gclass):
     @price.setter
     def price(self, price):
         self._price = float(price)
-def load_vehicles_from_csv(file_path):
-    df = pd.read_csv(file_path, encoding="utf-8", low_memory=False)
-    vehicles_created = {} 
-    for _, row in df.iterrows():
-        vehicle_id = str(row["vehicle_id"])
-        model = row["model"]
-        make = row["make"]
-        price = row["price"]
-        
-        if vehicle_id not in vehicles_created:
-            vehicles_created[vehicle_id] = Vehicle(vehicle_id, model, make, price)
-    
-    print(f"{len(vehicles_created)} veículos carregados com sucesso!")
-    return vehicles_created
-load_vehicles_from_csv('G24_Automotive – Dealers  Vehicles with Service Centers_merged.csv')

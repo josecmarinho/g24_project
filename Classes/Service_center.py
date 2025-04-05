@@ -6,7 +6,7 @@
 # Import the generic class
 from Classes.gclass import Gclass
 import pandas as pd
-class Service_center(Gclass):
+class service_center(Gclass):
     obj = dict()
     lst = list()
     pos = 0
@@ -21,13 +21,13 @@ class Service_center(Gclass):
     def __init__(self,id,name,location):
         super().__init__()
         # Object attributes
-        id = Service_center.get_id(id)
-        self._id = id
+        id = service_center.get_id(id)
+        self._id = int(id)
         self._name = name
         self._location= location
         # Add the new object to the Customer's list
-        Service_center.obj[id] = self
-        Service_center.lst.append(id)
+        service_center.obj[id] = self
+        service_center.lst.append(id)
     # Object properties
     # id property getter method
     @property
@@ -40,18 +40,3 @@ class Service_center(Gclass):
     @property
     def service_location(self):
         return self._location
-def load_centers_from_csv(file_path):
-    df = pd.read_csv(file_path, encoding="utf-8", low_memory=False)
-    centers_created = {} 
-    for _, row in df.iterrows():
-        service_id = str(row["servicecenter_id"])
-        name = row["center_name"]
-        location = row["service_location"]
-        
-        
-        if service_id not in centers_created:
-            centers_created[service_id] = Service_center(service_id, name, location)
-    
-    print(f"{len(centers_created)} centers carregados com sucesso!")
-    return centers_created
-load_centers_from_csv('G24_Automotive – Dealers  Vehicles with Service Centers_merged.csv')

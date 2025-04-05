@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Apr  3 16:19:32 2025
+@author: António Brito / Carlos Bragança
+(2021)
+#objective: Test classes based on generic class Gclass
 
-@author: josec
-"""
+"""""
+
 
 #Uncomment to test class Person (select next 4 lines and press ctrl-1)
-from Classes.dealer import dealer
+from Classes.Vehicle import vehicle
 
-test_class = dealer
-ob = ''
-db = 'dealer.db'
+test_class = vehicle
+ob = 'id,model,make,price'
+db = 'vehicle.db'
 import datetime
 #Reads the test_class.csv file
 
@@ -33,8 +35,8 @@ import datetime
 # from classes.customer import Customer
 # Customer.read('data/business.db')
 # test_class = Order
+test_class.read("data/"+db)
 
-test_class.read('data/'+db)
 
 op = ''
 while op != 'q':
@@ -157,3 +159,4 @@ while op != 'q':
                 test_class.current(fobjs[0].id)
                 for obj in fobjs:
                     print(obj)
+

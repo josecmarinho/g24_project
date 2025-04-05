@@ -3,14 +3,14 @@
 #objective: class OrderProduct
 """""
 # Class OrderProduct
-from Classes.dealer import Dealer
-from Classes.Vehicle import Vehicle
+from Classes.dealer import dealer
+from Classes.Vehicle import vehicle
 # Import the generic class
 from Classes.gclass import Gclass
 import datetime
 import pandas as pd
 
-class Sales(Gclass):
+class sales(Gclass):
     obj = dict()
     lst = list()
     pos = 0
@@ -26,20 +26,17 @@ class Sales(Gclass):
         super().__init__()
         # Object attributes
         # Check the order and product referential integrity
-        Dealer_id = float(dealer_id)
-        Vehicle_id = float(vehicle_id)
-        if Dealer_id in Dealer.lst:
-            if Vehicle_id in Vehicle.lst:
-                id = Sales.get_id(id)
-                self._id = id
-                self._dealer_id = dealer_id
-                self._vehicle_id = vehicle_id
+        if dealer_id in dealer.lst:
+            if vehicle_id in vehicle.lst:
+                self._id = (id)
+                self._dealer_id = (dealer_id)
+                self._vehicle_id = (vehicle_id)
                 self._price = float(price)
                 l=date.split("-")
                 self._date=datetime.date(int(l[0]),int(l[1]),int(l[2]))
                 # Add the new object to the OrderProduct list
-                Sales.obj[id] = self
-                Sales.lst.append(id)
+                sales.obj[id] = self
+                sales.lst.append(id)
             else:
                 print('Vehicle ', vehicle_id, ' not found')
         else:
@@ -70,13 +67,5 @@ class Sales(Gclass):
     @property
     def date(self):
          return self._date
-    
-def load_sales_from_csv(file_path):
-    df = pd.read_csv(file_path, encoding="utf-8", low_memory=False)
-    sales_created = {} 
-    for _, row in df.iterrows():
-        vehicle_id = str(row["vehicle_id"])
-        dealer_id= str(row["dealer_id"])
-        price = row["sale_price"]
-        date=row["sale_date"]
+
         

@@ -5,34 +5,14 @@ Created on Thu Apr  3 16:26:18 2025
 @author: josec
 """
 
-from Classes.Service_center import Service_center
-from Classes.Service_center import load_centers_from_csv
-test_class = Service_center
+from Classes.Service_center import service_center
+
+test_class = service_center
 ob = ''
-db = 'Dados.db'
+db = 'service_center.db'
 import datetime
-load_centers_from_csv('G24_Automotive – Dealers  Vehicles with Service Centers_merged.csv')
-#Reads the test_class.csv file
 
-#Uncomment to test class Cliente (select next two lines and press ctrl-1)
-# from classes.cliente import Cliente
-# test_class = Cliente
-# ob = '600;Xavier;1958-03-20;5000.0'
-
-#Uncomment to test class Product
-# from classes.product import Product
-# test_class = Product
-# ob='Product1;10.9;100'
-
-#Uncomment to test class Customer_login
-# from classes.customer import Customer
-# test_class = Customer
-
-#Uncomment to test class Order
-# from classes.customerorder import ustomerOrder
-# from classes.customer import Customer
-# Customer.read('data/business.db')
-# test_class = Order
+test_class.read('data/'+db)
 
 
 
