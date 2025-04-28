@@ -12,7 +12,7 @@ from Classes.Vehicle import vehicle
 
 test_class = vehicle
 ob = 'id,model,make,price'
-db = 'vehicle.db'
+db = 'automotive.db'
 import datetime
 #Reads the test_class.csv file
 
