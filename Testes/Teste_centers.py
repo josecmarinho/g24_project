@@ -1,40 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Apr  3 16:19:32 2025
+Created on Thu Apr  3 16:26:18 2025
 
 @author: josec
 """
 
-#Uncomment to test class Person (select next 4 lines and press ctrl-1)
-from Classes.dealer import dealer
+from Classes.Service_center import service_center
 
-test_class = dealer
+test_class = service_center
 ob = ''
-db = 'dealer.db'
+db = 'automotive.db'
 import datetime
-#Reads the test_class.csv file
-
-#Uncomment to test class Cliente (select next two lines and press ctrl-1)
-# from classes.cliente import Cliente
-# test_class = Cliente
-# ob = '600;Xavier;1958-03-20;5000.0'
-
-#Uncomment to test class Product
-# from classes.product import Product
-# test_class = Product
-# ob='Product1;10.9;100'
-
-#Uncomment to test class Customer_login
-# from classes.customer import Customer
-# test_class = Customer
-
-#Uncomment to test class Order
-# from classes.customerorder import ustomerOrder
-# from classes.customer import Customer
-# Customer.read('data/business.db')
-# test_class = Order
 
 test_class.read('data/'+db)
+
+
 
 op = ''
 while op != 'q':

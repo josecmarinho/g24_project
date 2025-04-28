@@ -9,9 +9,14 @@ from Classes.Sales import sales
 from Classes.Vehicle import vehicle
 from Classes.dealer import dealer
 
+vehicle.read("data/vehicle.db")
+dealer.read("data/dealer.db") 
+
+
+
 test_class = sales
 ob = ''
-db = 'sales.db'
+db = 'automotive.db'
 import datetime
 #Reads the test_class.csv file
 

@@ -5,6 +5,11 @@
 # Class OrderProduct
 from Classes.dealer import dealer
 from Classes.Vehicle import vehicle
+vehicle.read("data/vehicle.db")
+dealer.read("data/dealer.db")
+dealer_l=dealer.lst
+vehicle_l=vehicle.lst
+
 # Import the generic class
 from Classes.gclass import Gclass
 import datetime
@@ -25,9 +30,10 @@ class sales(Gclass):
     def __init__(self, id, dealer_id, vehicle_id, price,date):
         super().__init__()
         # Object attributes
+        vehicle_id=int(vehicle_id)
         # Check the order and product referential integrity
-        if dealer_id in dealer.lst:
-            if vehicle_id in vehicle.lst:
+        if dealer_id in dealer_l:
+            if vehicle_id in vehicle_l:
                 self._id = (id)
                 self._dealer_id = (dealer_id)
                 self._vehicle_id = (vehicle_id)
