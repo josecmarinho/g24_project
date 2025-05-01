@@ -5,8 +5,8 @@
 # Class OrderProduct
 from Classes.dealer import dealer
 from Classes.Vehicle import vehicle
-vehicle.read("data/vehicle.db")
-dealer.read("data/dealer.db")
+vehicle.read("data/automotive.db")
+dealer.read("data/automotive.db")
 dealer_l=dealer.lst
 vehicle_l=vehicle.lst
 
