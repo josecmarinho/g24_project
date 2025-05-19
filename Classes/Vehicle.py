@@ -23,8 +23,8 @@ class vehicle(Gclass):
         self._model = model
         self._make = make
         self._price = float(price)
-        vehicle.obj[vehicle_id] = self
-        vehicle.lst.append(int(id))
+        vehicle.obj[id] = self
+        vehicle.lst.append(id)
     
     @property
     def id(self):

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vehicle gclass</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <div class="dados">
+            <img src="{{ url_for('static', filename='images/vehicle.jpeg') }}" alt="vehicle" width="400" height="200">
+            <h1>Vehicle</h1>
+            <br>
+
+            <button type="button" {{butshow}} onclick="window.location.href='/?option=first'" class="button1">First</button>
+            <button type="button" {{butshow}} onclick="window.location.href='/?option=previous'" class="button1">Previous</button>
+            <button type="button" {{butshow}} onclick="window.location.href='/?option=next'" class="button1">Next</button>
+            <button type="button" {{butshow}} onclick="window.location.href='/?option=last'" class="button1">Last</button>
+            <button type="button" {{butshow}} onclick="window.location.href='/?option=exit'" class="button1">Exit</button>
+
+            <br><br>
+
+            <form action="/?option=save" method="post">
+                <label>Id:</label>
+                {% if butedit == 'enabled' %}
+                    <input type="text" disabled name="id" value="{{id}}" size="5"/><br><br>
+                {% else %}
+                    <input type="text" {{butedit}} name="id" value="{{id}}" size="10"/><br><br>
+                {% endif %}
+                
+                <label>Make:</label>
+                <input type="text" {{butedit}} name="make" value="{{make}}" size="30"/><br><br>
+
+                <label>Model:</label>
+                <input type="text" {{butedit}} name="model" value="{{model}}" size="30"/><br><br>
+
+                <label>Price:</label>
+                <input type="text" {{butedit}} name="price" value="{{price}}" size="10"/>
+            </form>
+        </div>
+        <aside class="suggested-sidebar">
+            <h2>Suggested Vehicles</h2>
+            <div class="suggested-card">
+                <img src="{{ url_for('static', filename='images/vehicle_1.jpeg') }}" alt="Vehicle 1">
+                <p><strong>Id:</strong> 1<br><strong>Model:</strong> dark<br><strong>Make:</strong> together</p>
+            </div>
+            <div class="suggested-card">
+                <img src="{{ url_for('static', filename='images/vehicle_2.jpeg') }}" alt="Vehicle 2">
+                <p><strong>Id:</strong> 2<br><strong>Model:</strong> able<br><strong>Make:</strong> standard</p>
+            </div>
+            <div class="suggested-card">
+                <img src="{{ url_for('static', filename='images/vehicle_3.jpeg') }}" alt="Vehicle 3">
+                <p><strong>Id:</strong> 3<br><strong>Model:</strong> possible<br><strong>Make:</strong> Congress</p>
+            </div>
+            <div class="suggested-card">
+                <img src="{{ url_for('static', filename='images/vehicle_4.jpeg') }}" alt="Vehicle 4">
+                <p><strong>Id:</strong> 4<br><strong>Model:</strong> company<br><strong>Make:</strong> house</p>
+            </div>
+            <div class="suggested-card">
+                <img src="{{ url_for('static', filename='images/vehicle_5.jpeg') }}" alt="Vehicle 5">
+                <p><strong>Id:</strong> 5<br><strong>Model:</strong> quickly<br><strong>Make:</strong> sing</p>
+            </div>
+        </aside>
+        <div class="left-sidebar">
+            <h2>Simulador de Pagamento das Mensalidades</h2>
+        
+            <label for="loan_amount">Montante (€):</label>
+            <input type="number" id="loan_amount" value="{{ '%.1f' % price }}" step="0" onchange="calculateMonthlyPayment()">
+        
+            <label for="interest_rate">Juro Anual (%):</label>
+            <input type="number" id="interest_rate" value="5" step="0.1" onchange="calculateMonthlyPayment()">
+        
+            <label for="loan_term">Prazo (Anos):</label>
+            <input type="number" id="loan_term" value="5" onchange="calculateMonthlyPayment()">
+        
+            <strong>Pagamento Mensal:</strong> <span id="monthly_payment">€0.00</span>
+        </div>                
+    </div>
+    <script>
+        window.onload = function() {
+            calculateMonthlyPayment();
+        };
+    
+        function calculateMonthlyPayment() {
+            let loanAmount = parseFloat(document.getElementById('loan_amount').value);
+            let interestRate = parseFloat(document.getElementById('interest_rate').value) / 100 / 12;
+            let loanTerm = parseInt(document.getElementById('loan_term').value) * 12;
+    
+            if (isNaN(loanAmount) || isNaN(interestRate) || isNaN(loanTerm) || loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0) {
+                document.getElementById('monthly_payment').textContent = "€0.00";
+                return;
+            }
+    
+            let monthlyPayment = (loanAmount * interestRate) / (1 - Math.pow(1 + interestRate, -loanTerm));
+            document.getElementById('monthly_payment').textContent = formatPrice(monthlyPayment);
+        }
+    
+        function formatPrice(value) {
+            return value.toLocaleString('pt-PT', {
+                style: 'currency',
+                currency: 'EUR'
+            });
+        }
+    </script>
+</body>
+</html>
+

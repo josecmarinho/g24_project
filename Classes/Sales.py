@@ -23,14 +23,13 @@ class sales(Gclass):
     # class attributes, identifier id, attribute must be the first on the list
     att = ['_id', '_dealer_id','_vehicle_id','_price',"_date"]
     # Class header title
-    header = 'Persons'
+    header = 'Sales'
     # field description for use in, for example, input form
-    des = ['Id','Order_id','Customer_id','Price',"Date"]
+    des = ['Id','Dealer_id','Vehicle_id','Price',"Date"]
     # Constructor: Called when an object is instantiated
     def __init__(self, id, dealer_id, vehicle_id, price,date):
         super().__init__()
         # Object attributes
-        vehicle_id=int(vehicle_id)
         # Check the order and product referential integrity
         if dealer_id in dealer_l:
             if vehicle_id in vehicle_l:
