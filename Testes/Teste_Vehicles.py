@@ -158,5 +158,5 @@ while op != 'q':
             if len(fobjs) > 0:
                 test_class.current(fobjs[0].id)
                 for obj in fobjs:
-                    print(obj)
+                    print(obj) 
 

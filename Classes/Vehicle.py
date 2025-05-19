@@ -40,4 +40,4 @@ class vehicle(Gclass):
         return self._price
     @price.setter
     def price(self, price):
-        self._price = float(price)
+        self._price = float(price) 

@@ -8,7 +8,11 @@ Created on Thu Apr  3 16:26:18 2025
 from Classes.Service_center import service_center
 
 test_class = service_center
+<<<<<<< HEAD
 ob = '' 
+=======
+ob = ''
+>>>>>>> cac1f315f984b6f2bf8a2c3eeae09007d32c440b
 db = 'automotive.db'
 import datetime
 

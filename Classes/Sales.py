@@ -5,8 +5,13 @@
 # Class OrderProduct
 from Classes.dealer import dealer
 from Classes.Vehicle import vehicle
+<<<<<<< HEAD
 vehicle.read("data/vehicle.db")
 dealer.read("data/dealer.db")
+=======
+vehicle.read("data/automotive.db")
+dealer.read("data/automotive.db")
+>>>>>>> cac1f315f984b6f2bf8a2c3eeae09007d32c440b
 dealer_l=dealer.lst
 vehicle_l=vehicle.lst
 
@@ -30,6 +35,7 @@ class sales(Gclass):
     def __init__(self, id, dealer_id, vehicle_id, price,date):
         super().__init__()
         # Object attributes
+        vehicle_id=int(vehicle_id)
         # Check the order and product referential integrity
         if dealer_id in dealer_l:
             if vehicle_id in vehicle_l:

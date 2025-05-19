@@ -52,3 +52,4 @@ class dealer(Gclass):
         self._rating = float(rating)  
 
 
+
